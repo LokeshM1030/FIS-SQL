@@ -116,9 +116,10 @@ ORDER BY ENAME;
 
 /* 10. For each department, list its name and number together with the 
 total salary paid to employees in that department.*/
-SELECT DNAME, DEPTNO, SUM(SAL)
-FROM DEPT
-JOIN EMP USING (DEPTNO); /*not working*/
+SELECT DNAME, DEPTNO, SUM(SAL) AS 'ANNUAL'
+FROM DEPT 
+JOIN EMP ON DEPTNO= DEPT_NO
+GROUP BY DNAME,DEPTNO;
 
 /* 11. Find out salary of both MILLER and SMITH.*/
 SELECT ENAME,SAL FROM EMP
@@ -142,3 +143,20 @@ WHERE SAL NOT IN
 (SELECT SAL FROM EMP WHERE SAL BETWEEN 1500 AND 2850) 
 GROUP BY ENAME,SAL
 
+/*DAY 2*/
+
+CREATE DATABASE DAY2
+
+CREATE TABLE EMPLOYEE
+(	
+	empno int not null primary key,
+	ename varchar(20),
+	job varchar(20),
+	age int,
+	mgrid int,
+	GENDER VARCHAR(20),
+	sal int,
+	comm int,
+)
+
+INSERT INTO
